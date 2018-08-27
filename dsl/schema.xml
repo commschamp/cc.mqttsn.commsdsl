@@ -82,14 +82,6 @@
         <int name="MessageId" type="uint16" displayName="MsgId"/>
         <string name="TopicName" />
         <data name="Data" />
-        
-        
-        <int name="Length" type="uint16" />
-        <string name="String" lengthPrefix="Length" />
-        <data name="BinData" lengthPrefix="Length" />
-        <string reuse="String" name="ProtocolName" defaultValue="MQTT" displayName="Protocol Name"/>
-        <int name="PacketId" type="uint16" displayName="Packet ID"/>
-        
     </fields>
     
     <frame name="Frame">
