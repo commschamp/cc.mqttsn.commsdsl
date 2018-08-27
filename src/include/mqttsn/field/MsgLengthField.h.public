@@ -10,15 +10,15 @@ std::size_t getLengthValue() const
 }
 
 /// @brief Extra function to set current length value
-void setLengthValue(std::size_t value)
+void setLengthValue(std::size_t val)
 {
-    if (value <= 0xfe) {
-        field_short().value() = static_cast<std::uint8_t>(value);
+    if (val <= 0xfe) {
+        field_short().value() = static_cast<std::uint8_t>(val);
         field_long().setMissing();
         return;
     }
     
     field_short().value() = 0U;
     field_long().setExists();
-    field_long().field().value() = static_cast<std::uint16_t>(value);
+    field_long().field().value() = static_cast<std::uint16_t>(val);
 }
