@@ -3,7 +3,7 @@
         id="1"
         endian="big">
     <fields>
-        <enum name="MsgId" type="uint8" semanticType="messageId" >
+        <enum name="MsgId" type="uint8" semanticType="messageId" hexAssign="true">
             <validValue name="Advertise" val="0x0" displayName="ADVERTISE" />
             <validValue name="Searchgw" val="0x1" displayName="SEARCHGW" />
             <validValue name="Gwinfo" val="0x2" displayName="GWINFO" />
@@ -91,66 +91,66 @@
     </frame>       
     
     <message name="Advertise" id="MsgId.Advertise" displayName="ADVERTISE">
-        <ref name="GwId" field="GwId" />
-        <ref name="Duration" field="Duration" />
+        <ref field="GwId" />
+        <ref field="Duration" />
     </message>
     
     <message name="Searchgw" id="MsgId.Searchgw" displayName="SEARCHGW">
-        <ref name="Radius" field="Radius" />
+        <ref field="Radius" />
     </message>   
     
     <message name="Gwinfo" id="MsgId.Gwinfo" displayName="GWINFO">
-        <ref name="GwId" field="GwId" />
-        <ref name="GwAdd" field="GwAdd" />
+        <ref field="GwId" />
+        <ref field="GwAdd" />
     </message>  
     
     <message name="Connect" id="MsgId.Connect" displayName="CONNECT">
-        <ref name="Flags" field="Flags" />
-        <ref name="ProtocolId" field="ProtocolId" />
-        <ref name="Duration" field="Duration" />
-        <ref name="ClientId" field="ClientId" />
+        <ref field="Flags" />
+        <ref field="ProtocolId" />
+        <ref field="Duration" />
+        <ref field="ClientId" />
     </message>    
     
     <message name="Connack" id="MsgId.Connack" displayName="CONNACK">
-        <ref name="ReturnCode" field="ReturnCode" />
+        <ref field="ReturnCode" />
     </message>        
     
     <message name="Willtopicreq" id="MsgId.Willtopicreq" displayName="WILLTOPICREQ" />
     
     <message name="Willtopic" id="MsgId.Willtopic" displayName="WILLTOPIC">
-        <ref name="Flags" field="Flags" />
-        <ref name="WillTopic" field="WillTopic" />
+        <ref field="Flags" />
+        <ref field="WillTopic" />
     </message>    
     
     <message name="Willmsgreq" id="MsgId.Willmsgreq" displayName="WILLMSGREQ" />
     
     <message name="Willmsg" id="MsgId.Willmsg" displayName="WILLMSG">
-        <ref name="WillMsg" field="WillMsg" />
+        <ref field="WillMsg" />
     </message> 
     
     <message name="Register" id="MsgId.Register" displayName="REGISTER">
-        <ref name="TopicId" field="TopicId" />
+        <ref field="TopicId" />
         <ref name="MsgId" field="MessageId" />
-        <ref name="TopicName" field="TopicName" />
+        <ref field="TopicName" />
     </message>     
     
     <message name="Regack" id="MsgId.Regack" displayName="REGACK">
-        <ref name="TopicId" field="TopicId" />
+        <ref field="TopicId" />
         <ref name="MsgId" field="MessageId" />
-        <ref name="ReturnCode" field="ReturnCode" />
+        <ref field="ReturnCode" />
     </message>   
     
     <message name="Publish" id="MsgId.Publish" displayName="PUBLISH">
-        <ref name="Flags" field="Flags" />
-        <ref name="TopicId" field="TopicId" />
+        <ref field="Flags" />
+        <ref field="TopicId" />
         <ref name="MsgId" field="MessageId" />
-        <ref name="Data" field="Data" />
+        <ref field="Data" />
     </message>                      
     
     <message name="Puback" id="MsgId.Puback" displayName="PUBACK">
-        <ref name="TopicId" field="TopicId" />
+        <ref field="TopicId" />
         <ref name="MsgId" field="MessageId" />
-        <ref name="ReturnCode" field="ReturnCode" />
+        <ref field="ReturnCode" />
     </message>      
     
     <message name="Pubrec" id="MsgId.Pubrec" displayName="PUBREC">
@@ -162,21 +162,21 @@
     <message name="Pubcomp" id="MsgId.Pubcomp" displayName="PUBCOMP" copyFieldsFrom="Pubrec" />
     
     <message name="Subscribe" id="MsgId.Subscribe" displayName="SUBSCRIBE">
-        <ref name="Flags" field="Flags" />
+        <ref field="Flags" />
         <ref name="MsgId" field="MessageId" />
         <optional name="TopicId" defaultMode="exists" externalModeCtrl="true">
-            <ref name="TopicId" field="TopicId" />
+            <ref  field="TopicId" />
         </optional>
         <optional name="TopicName" defaultMode="missing" externalModeCtrl="true">
-            <ref name="TopicName" field="TopicName" />
+            <ref field="TopicName" />
         </optional>
     </message>
     
     <message name="Suback" id="MsgId.Suback" displayName="SUBACK">
-        <ref name="Flags" field="Flags" />
-        <ref name="TopicId" field="TopicId" />
+        <ref field="Flags" />
+        <ref field="TopicId" />
         <ref name="MsgId" field="MessageId" />
-        <ref name="ReturnCode" field="ReturnCode" />
+        <ref field="ReturnCode" />
     </message>     
     
     <message name="Unsubscribe" id="MsgId.Unsubscribe" displayName="UNSUBSCRIBE" copyFieldsFrom="Subscribe" />
@@ -186,27 +186,27 @@
     </message>   
     
     <message name="Pingreq" id="MsgId.Pingreq" displayName="PINGREQ">
-        <ref name="ClientId" field="ClientId" />
+        <ref field="ClientId" />
     </message>   
     
     <message name="Pingresp" id="MsgId.Pingresp" displayName="PINGRESP" /> 
     
     <message name="Disconnect" id="MsgId.Disconnect" displayName="DISCONNECT">
         <optional name="Duration" defaultMode="missing">
-            <ref name="Duration" field="Duration" />
+            <ref field="Duration" />
         </optional>
     </message>     
     
     <message name="Willtopicupd" id="MsgId.Willtopicupd" displayName="WILLTOPICUPD">
-        <ref name="WillTopic" field="WillTopic" />
+        <ref field="WillTopic" />
     </message>   
     
     <message name="Willmsgupd" id="MsgId.Willmsgupd" displayName="WILLMSGUPD">
-        <ref name="WillMsg" field="WillMsg" />
+        <ref field="WillMsg" />
     </message>     
     
     <message name="Willtopicresp" id="MsgId.Willtopicresp" displayName="WILLTOPICRESP">
-        <ref name="ReturnCode" field="ReturnCode" />
+        <ref field="ReturnCode" />
     </message>       
     
     <message name="Willmsgresp" id="MsgId.Willmsgresp" displayName="WILLMSGRESP" >             
