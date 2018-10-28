@@ -164,10 +164,10 @@
     <message name="Subscribe" id="MsgId.Subscribe" displayName="SUBSCRIBE" sender="client">
         <ref field="Flags" />
         <ref name="MsgId" field="MessageId" />
-        <optional name="TopicId" defaultMode="exists" externalModeCtrl="true">
+        <optional name="TopicId" defaultMode="exists" displayExtModeCtrl="true">
             <ref  field="TopicId" />
         </optional>
-        <optional name="TopicName" defaultMode="missing" externalModeCtrl="true">
+        <optional name="TopicName" defaultMode="missing" displayExtModeCtrl="true">
             <ref field="TopicName" />
         </optional>
     </message>
