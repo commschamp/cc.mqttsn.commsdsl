@@ -17,6 +17,10 @@ code snippets, that get injected into the generated code.
 The generated CMake project of this protocol definition is hosted and can be
 viewed at [cc.mqttsn.generated](https://github.com/arobenko/cc.mqttsn.generated)
 
+# License
+Please read [License](https://github.com/arobenko/commsdsl#license)
+section from [commsdsl](https://github.com/arobenko/commsdsl) project.
+
 # How to Build
 This project uses CMake as its build system. Please open main
 [CMakeLists.txt](CMakeLists.txt) file and review available options as well as
