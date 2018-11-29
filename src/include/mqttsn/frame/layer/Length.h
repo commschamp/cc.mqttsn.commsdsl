@@ -16,6 +16,9 @@ namespace layer
 {
 
 /// @brief Custom length calculation layer
+/// @tparam TField Used field type
+/// @tparam TNextLayer Next frame layer
+/// @tparam TExtraOpt Extra options passed to @b comms::MsgFactory
 template <
     typename TField,
     typename TNextLayer,
