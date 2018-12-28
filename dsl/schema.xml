@@ -51,6 +51,7 @@
             <validValue name="AtMostOnceDelivery" val="0" />
             <validValue name="AtLeastOnceDelivery" val="1" />
             <validValue name="ExactlyOnceDelivery" val="2" />
+            <validValue name="NoGwPublish" val="3" />
         </enum>
         <bitfield name="Flags">
             <enum name="TopicIdType" type="uint8" bitLength="2">
