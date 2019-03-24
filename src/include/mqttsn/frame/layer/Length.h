@@ -4,7 +4,8 @@
 #pragma once
 
 #include <type_traits>
-#include "comms/protocol/ProtocolLayerBase.h"
+#include "comms/options.h"
+#include "comms/protocol/MsgSizeLayer.h"
 
 namespace mqttsn
 {
@@ -24,106 +25,37 @@ template <
     typename TNextLayer,
     typename... TExtraOpts>
 class Length : public
-    comms::protocol::ProtocolLayerBase<
+    comms::protocol::MsgSizeLayer<
         TField,
         TNextLayer,
-        Length<TField, TNextLayer, TExtraOpts...>
+        comms::option::ExtendingClass<Length<TField, TNextLayer, TExtraOpts...> >
     >
 {
     using Base =
-        comms::protocol::ProtocolLayerBase<
+        comms::protocol::MsgSizeLayer<
             TField,
             TNextLayer,
-            Length<TField, TNextLayer, TExtraOpts...>
+            comms::option::ExtendingClass<Length<TField, TNextLayer, TExtraOpts...> >
         >;
-public:
-    /// @brief Smart pointer to message object.
-    using MsgPtr = typename Base::MsgPtr;
 
-    static_assert(!std::is_void<MsgPtr>::value,
-        "The inner layers must define MsgPtr type");
-        
-    /// @brief Type of field.
+public:
+    /// @brief Field type is defined in the base class.
     using Field = typename Base::Field;
 
-    template <typename TMsgPtr, typename TIter, typename TNextLayerReader>
-    comms::ErrorStatus doRead(
-        Field& field,
-        TMsgPtr& msgPtr,
-        TIter& iter,
-        std::size_t size,
-        std::size_t* missingSize,
-        TNextLayerReader&& nextLayerReader)
+    /// @brief Retrieve message ID value from the given field
+    static std::size_t getRemainingSizeFromField(const Field& field)
     {
-        using IterType = typename std::decay<decltype(iter)>::type ;
-        using IterTag = typename std::iterator_traits<IterType>::iterator_category;
-        static_assert(
-            std::is_base_of<std::random_access_iterator_tag, IterTag>::value,
-            "Current implementation of Length requires iterator used for reading to be random-access one.");
-
-        auto es = field.read(iter, size);
-        if (es != comms::ErrorStatus::Success) {
-            return es;
-        }
-
-        auto fromIter = iter;
-        auto actualRemainingSize = (size - field.length());
-        auto requiredRemainingSize = field.getLengthValue();
-
-        if (actualRemainingSize < requiredRemainingSize) {
-            if (missingSize != nullptr) {
-                *missingSize = requiredRemainingSize - actualRemainingSize;
-            }
-            return comms::ErrorStatus::NotEnoughData;
-        }
-
-        // not passing missingSize farther on purpose
-        es = nextLayerReader.read(msgPtr, iter, requiredRemainingSize, nullptr);
-        if (es == comms::ErrorStatus::NotEnoughData) {
-            return comms::ErrorStatus::ProtocolError;
-        }
-
-        auto consumed =
-            static_cast<std::size_t>(std::distance(fromIter, iter));
-        if (consumed < requiredRemainingSize) {
-            auto diff = requiredRemainingSize - consumed;
-            std::advance(iter, diff);
-        }
-        return es;
+        return field.getLengthValue();
     }
 
-    template <typename TMsg, typename TIter, typename TNextLayerWriter>
-    comms::ErrorStatus doWrite(
-        Field& field,
-        const TMsg& msg,
-        TIter& iter,
-        std::size_t size,
-        TNextLayerWriter&& nextLayerWriter) const
-    {
-        auto wrappedLength = Base::nextLayer().length(msg);
-        field.setLengthValue(wrappedLength);
-        auto es = field.write(iter, size);
-        if (es != comms::ErrorStatus::Success) {
-            return es;
-        }
-
-        GASSERT(field.length() <= size);
-        return nextLayerWriter.write(msg, iter, size - field.length());
-    }
-
-    constexpr std::size_t length() const
-    {
-        return Field::minLength() + Base::nextLayer().length();
-    }
-
+    /// @brief Assemble the field's value before its write.
     template <typename TMsg>
-    std::size_t length(const TMsg& msg) const
+    static void prepareFieldForWrite(std::size_t size, const TMsg* msg, Field& field)
     {
-        Field fieldTmp;
-        auto wrappedLength = Base::nextLayer().length(msg);
-        fieldTmp.setLengthValue(wrappedLength);
-        return fieldTmp.length() + wrappedLength; 
+        static_cast<void>(msg);
+        field.setLengthValue(size);
     }
+
 };
 
 }  // namespace layer
