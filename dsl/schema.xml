@@ -1,36 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="mqttsn"
-        id="1"
-        endian="big">
+<schema name="mqttsn" endian="big" dslVersion="2">
     <fields>
+        <string name="AdvertiseName" defaultValue="ADVERTISE" />
+        <string name="SearchgwName" defaultValue="SEARCHGW" />
+        <string name="GwinfoName" defaultValue="GWINFO" />
+        <string name="ConnectName" defaultValue="CONNECT" />
+        <string name="ConnackName" defaultValue="CONNACK" />
+        <string name="WilltopicreqName" defaultValue="WILLTOPICREQ" />
+        <string name="WilltopicName" defaultValue="WILLTOPIC" />
+        <string name="WillmsgreqName" defaultValue="WILLMSGREQ" />
+        <string name="WillmsgName" defaultValue="WILLMSG" />
+        <string name="RegisterName" defaultValue="REGISTER" />
+        <string name="RegackName" defaultValue="REGACK" />
+        <string name="PublishName" defaultValue="PUBLISH" />
+        <string name="PubackName" defaultValue="PUBACK" />
+        <string name="PubcompName" defaultValue="PUBCOMP" />
+        <string name="PubrecName" defaultValue="PUBREC" />
+        <string name="PubrelName" defaultValue="PUBREL" />
+        <string name="SubscribeName" defaultValue="SUBSCRIBE" />
+        <string name="SubackName" defaultValue="SUBACK" />
+        <string name="UnsubscribeName" defaultValue="UNSUBSCRIBE" />
+        <string name="UnsubackName" defaultValue="UNSUBACK" />
+        <string name="PingreqName" defaultValue="PINGREQ" />
+        <string name="PingrespName" defaultValue="fPINGRESP" />
+        <string name="DisconnectName" defaultValue="DISCONNECT" />
+        <string name="WilltopicupdName" defaultValue="WILLTOPICUPD" />
+        <string name="WilltopicrespName" defaultValue="WILLTOPICRESP" />
+        <string name="WillmsgupdName" defaultValue="WILLMSGUPD" />
+        <string name="WillmsgrespName" defaultValue="WILLMSGRESP" />
+        
         <enum name="MsgId" type="uint8" semanticType="messageId" hexAssign="true">
-            <validValue name="Advertise" val="0x0" displayName="ADVERTISE" />
-            <validValue name="Searchgw" val="0x1" displayName="SEARCHGW" />
-            <validValue name="Gwinfo" val="0x2" displayName="GWINFO" />
-            <validValue name="Connect" val="0x4" displayName="CONNECT" />
-            <validValue name="Connack" val="0x5" displayName="CONNACK" />
-            <validValue name="Willtopicreq" val="0x6" displayName="WILLTOPICREQ" />
-            <validValue name="Willtopic" val="0x7" displayName="WILLTOPIC" />
-            <validValue name="Willmsgreq" val="0x8" displayName="WILLMSGREQ" />
-            <validValue name="Willmsg" val="0x9" displayName="WILLMSG" />
-            <validValue name="Register" val="0xa" displayName="REGISTER" />
-            <validValue name="Regack" val="0xb" displayName="REGACK" />
-            <validValue name="Publish" val="0xc" displayName="PUBLISH" />
-            <validValue name="Puback" val="0xd" displayName="PUBACK" />
-            <validValue name="Pubcomp" val="0xe" displayName="PUBCOMP" />
-            <validValue name="Pubrec" val="0xf" displayName="PUBREC" />
-            <validValue name="Pubrel" val="0x10" displayName="PUBREL" />
-            <validValue name="Subscribe" val="0x12" displayName="SUBSCRIBE" />
-            <validValue name="Suback" val="0x13" displayName="SUBACK" />
-            <validValue name="Unsubscribe" val="0x14" displayName="UNSUBSCRIBE" />
-            <validValue name="Unsuback" val="0x15" displayName="UNSUBACK" />
-            <validValue name="Pingreq" val="0x16" displayName="PINGREQ" />
-            <validValue name="Pingresp" val="0x17" displayName="PINGRESP" />
-            <validValue name="Disconnect" val="0x18" displayName="DISCONNECT" />
-            <validValue name="Willtopicupd" val="0x1a" displayName="WILLTOPICUPD" />
-            <validValue name="Willtopicresp" val="0x1b" displayName="WILLTOPICRESP" />
-            <validValue name="Willmsgupd" val="0x1c" displayName="WILLMSGUPD" />
-            <validValue name="Willmsgresp" val="0x1d" displayName="WILLMSGRESP" />
+            <validValue name="Advertise" val="0x0" displayName="^AdvertiseName" />
+            <validValue name="Searchgw" val="0x1" displayName="^SearchgwName" />
+            <validValue name="Gwinfo" val="0x2" displayName="^GwinfoName" />
+            <validValue name="Connect" val="0x4" displayName="^ConnectName" />
+            <validValue name="Connack" val="0x5" displayName="^ConnackName" />
+            <validValue name="Willtopicreq" val="0x6" displayName="^WilltopicreqName" />
+            <validValue name="Willtopic" val="0x7" displayName="^WilltopicName" />
+            <validValue name="Willmsgreq" val="0x8" displayName="^WillmsgreqName" />
+            <validValue name="Willmsg" val="0x9" displayName="^WillmsgName" />
+            <validValue name="Register" val="0xa" displayName="^RegisterName" />
+            <validValue name="Regack" val="0xb" displayName="^RegackName" />
+            <validValue name="Publish" val="0xc" displayName="^PublishName" />
+            <validValue name="Puback" val="0xd" displayName="^PubackName" />
+            <validValue name="Pubcomp" val="0xe" displayName="^PubcompName" />
+            <validValue name="Pubrec" val="0xf" displayName="^PubrecName" />
+            <validValue name="Pubrel" val="0x10" displayName="^PubrelName" />
+            <validValue name="Subscribe" val="0x12" displayName="^SubscribeName" />
+            <validValue name="Suback" val="0x13" displayName="^SubackName" />
+            <validValue name="Unsubscribe" val="0x14" displayName="^UnsubscribeName" />
+            <validValue name="Unsuback" val="0x15" displayName="^UnsubackName" />
+            <validValue name="Pingreq" val="0x16" displayName="^PingreqName" />
+            <validValue name="Pingresp" val="0x17" displayName="^PingrespName" />
+            <validValue name="Disconnect" val="0x18" displayName="^DisconnectName" />
+            <validValue name="Willtopicupd" val="0x1a" displayName="^WilltopicupdName" />
+            <validValue name="Willtopicresp" val="0x1b" displayName="^WilltopicrespName" />
+            <validValue name="Willmsgupd" val="0x1c" displayName="^WillmsgupdName" />
+            <validValue name="Willmsgresp" val="0x1d" displayName="^WillmsgrespName" />
         </enum>
         <bundle name="MsgLengthField" displayName="Length">
             <int name="short" type="uint8" serOffset="1" displayOffset="1"/>
@@ -64,7 +90,7 @@
                 <bit name="Will" idx="1" />
                 <bit name="Retain" idx="2" />
             </set>
-            <enum name="QoS" reuse="QoS" bitLength="2" />
+            <ref field="QoS" bitLength="2" />
             <set name="high" bitLength="1" displayName="_">
                 <bit name="Dup" idx="0" />
             </set>
@@ -91,78 +117,78 @@
         <payload name="Data" />
     </frame>       
     
-    <message name="Advertise" id="MsgId.Advertise" displayName="ADVERTISE" sender="server">
+    <message name="Advertise" id="MsgId.Advertise" displayName="^AdvertiseName" sender="server">
         <ref field="GwId" />
         <ref field="Duration" />
     </message>
     
-    <message name="Searchgw" id="MsgId.Searchgw" displayName="SEARCHGW" sender="client">
+    <message name="Searchgw" id="MsgId.Searchgw" displayName="^SearchgwName" sender="client">
         <ref field="Radius" />
     </message>   
     
-    <message name="Gwinfo" id="MsgId.Gwinfo" displayName="GWINFO">
+    <message name="Gwinfo" id="MsgId.Gwinfo" displayName="^GwinfoName">
         <ref field="GwId" />
         <ref field="GwAdd" />
     </message>  
     
-    <message name="Connect" id="MsgId.Connect" displayName="CONNECT" sender="client">
+    <message name="Connect" id="MsgId.Connect" displayName="^ConnectName" sender="client">
         <ref field="Flags" />
         <ref field="ProtocolId" />
         <ref field="Duration" />
         <ref field="ClientId" />
     </message>    
     
-    <message name="Connack" id="MsgId.Connack" displayName="CONNACK" sender="server">
+    <message name="Connack" id="MsgId.Connack" displayName="^ConnackName" sender="server">
         <ref field="ReturnCode" />
     </message>        
     
-    <message name="Willtopicreq" id="MsgId.Willtopicreq" displayName="WILLTOPICREQ" sender="server"/>
+    <message name="Willtopicreq" id="MsgId.Willtopicreq" displayName="^WilltopicreqName" sender="server"/>
     
-    <message name="Willtopic" id="MsgId.Willtopic" displayName="WILLTOPIC" sender="client">
+    <message name="Willtopic" id="MsgId.Willtopic" displayName="^WilltopicName" sender="client">
         <ref field="Flags" />
         <ref field="WillTopic" />
     </message>    
     
-    <message name="Willmsgreq" id="MsgId.Willmsgreq" displayName="WILLMSGREQ" sender="server"/>
+    <message name="Willmsgreq" id="MsgId.Willmsgreq" displayName="^WillmsgreqName" sender="server"/>
     
-    <message name="Willmsg" id="MsgId.Willmsg" displayName="WILLMSG" sender="client">
+    <message name="Willmsg" id="MsgId.Willmsg" displayName="^WillmsgName" sender="client">
         <ref field="WillMsg" />
     </message> 
     
-    <message name="Register" id="MsgId.Register" displayName="REGISTER">
+    <message name="Register" id="MsgId.Register" displayName="^RegisterName">
         <ref field="TopicId" />
         <ref name="MsgId" field="MessageId" />
         <ref field="TopicName" />
     </message>     
     
-    <message name="Regack" id="MsgId.Regack" displayName="REGACK">
+    <message name="Regack" id="MsgId.Regack" displayName="^RegackName">
         <ref field="TopicId" />
         <ref name="MsgId" field="MessageId" />
         <ref field="ReturnCode" />
     </message>   
     
-    <message name="Publish" id="MsgId.Publish" displayName="PUBLISH">
+    <message name="Publish" id="MsgId.Publish" displayName="^PublishName">
         <ref field="Flags" />
         <ref field="TopicId" />
         <ref name="MsgId" field="MessageId" />
         <ref field="Data" />
     </message>                      
     
-    <message name="Puback" id="MsgId.Puback" displayName="PUBACK">
+    <message name="Puback" id="MsgId.Puback" displayName="^PubackName">
         <ref field="TopicId" />
         <ref name="MsgId" field="MessageId" />
         <ref field="ReturnCode" />
     </message>      
     
-    <message name="Pubrec" id="MsgId.Pubrec" displayName="PUBREC">
+    <message name="Pubrec" id="MsgId.Pubrec" displayName="^PubrecName">
         <ref name="MsgId" field="MessageId" />
     </message>
     
-    <message name="Pubrel" id="MsgId.Pubrel" displayName="PUBREL" copyFieldsFrom="Pubrec" />
+    <message name="Pubrel" id="MsgId.Pubrel" displayName="^PubrelName" copyFieldsFrom="Pubrec" />
     
-    <message name="Pubcomp" id="MsgId.Pubcomp" displayName="PUBCOMP" copyFieldsFrom="Pubrec" />
+    <message name="Pubcomp" id="MsgId.Pubcomp" displayName="^PubcompName" copyFieldsFrom="Pubrec" />
     
-    <message name="Subscribe" id="MsgId.Subscribe" displayName="SUBSCRIBE" sender="client">
+    <message name="Subscribe" id="MsgId.Subscribe" displayName="^SubscribeName" sender="client">
         <ref field="Flags" />
         <ref name="MsgId" field="MessageId" />
         <optional name="TopicId" defaultMode="exists" displayExtModeCtrl="true">
@@ -173,44 +199,44 @@
         </optional>
     </message>
     
-    <message name="Suback" id="MsgId.Suback" displayName="SUBACK" sender="server">
+    <message name="Suback" id="MsgId.Suback" displayName="^SubackName" sender="server">
         <ref field="Flags" />
         <ref field="TopicId" />
         <ref name="MsgId" field="MessageId" />
         <ref field="ReturnCode" />
     </message>     
     
-    <message name="Unsubscribe" id="MsgId.Unsubscribe" displayName="UNSUBSCRIBE" copyFieldsFrom="Subscribe" sender="client"/>
+    <message name="Unsubscribe" id="MsgId.Unsubscribe" displayName="^UnsubscribeName" copyFieldsFrom="Subscribe" sender="client"/>
     
-    <message name="Unsuback" id="MsgId.Unsuback" displayName="UNSUBACK" sender="server">
+    <message name="Unsuback" id="MsgId.Unsuback" displayName="^UnsubackName" sender="server">
         <ref name="MsgId" field="MessageId" />
     </message>   
     
-    <message name="Pingreq" id="MsgId.Pingreq" displayName="PINGREQ">
+    <message name="Pingreq" id="MsgId.Pingreq" displayName="^PingreqName">
         <ref field="ClientId" />
     </message>   
     
-    <message name="Pingresp" id="MsgId.Pingresp" displayName="PINGRESP" /> 
+    <message name="Pingresp" id="MsgId.Pingresp" displayName="^PingrespName" /> 
     
-    <message name="Disconnect" id="MsgId.Disconnect" displayName="DISCONNECT">
+    <message name="Disconnect" id="MsgId.Disconnect" displayName="^DisconnectName">
         <optional name="Duration" defaultMode="missing">
             <ref field="Duration" />
         </optional>
     </message>     
     
-    <message name="Willtopicupd" id="MsgId.Willtopicupd" displayName="WILLTOPICUPD" sender="client">
+    <message name="Willtopicupd" id="MsgId.Willtopicupd" displayName="^WilltopicupdName" sender="client">
         <ref field="WillTopic" />
     </message>   
     
-    <message name="Willmsgupd" id="MsgId.Willmsgupd" displayName="WILLMSGUPD" sender="client">
+    <message name="Willmsgupd" id="MsgId.Willmsgupd" displayName="^WillmsgupdName" sender="client">
         <ref field="WillMsg" />
     </message>     
     
-    <message name="Willtopicresp" id="MsgId.Willtopicresp" displayName="WILLTOPICRESP" sender="server">
+    <message name="Willtopicresp" id="MsgId.Willtopicresp" displayName="^WilltopicrespName" sender="server">
         <ref field="ReturnCode" />
     </message>       
     
-    <message name="Willmsgresp" id="MsgId.Willmsgresp" displayName="WILLMSGRESP" sender="server">             
+    <message name="Willmsgresp" id="MsgId.Willmsgresp" displayName="^WillmsgrespName" sender="server">             
         <copyFieldsFrom value="Willtopicresp" />
     </message>
 </schema>
