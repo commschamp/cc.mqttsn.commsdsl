@@ -81,9 +81,9 @@
         </enum>
         <bitfield name="Flags">
             <enum name="TopicIdType" type="uint8" bitLength="2">
-                <validValue name="NormalTopicId" val="0" />
+                <validValue name="Normal" val="0" />
                 <validValue name="PredefinedTopicId" val="1" />
-                <validValue name="TopicName" val="2" />
+                <validValue name="ShortTopicName" val="2" />
             </enum>
             <set name="mid" bitLength="3" displayName="_">
                 <bit name="CleanSession" idx="0" />
