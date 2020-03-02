@@ -219,7 +219,7 @@
     <message name="Pingresp" id="MsgId.Pingresp" displayName="^PingrespName" /> 
     
     <message name="Disconnect" id="MsgId.Disconnect" displayName="^DisconnectName">
-        <optional name="Duration" defaultMode="missing">
+        <optional name="Duration" defaultMode="tentative">
             <ref field="Duration" />
         </optional>
     </message>     
