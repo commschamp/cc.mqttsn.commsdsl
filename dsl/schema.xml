@@ -225,6 +225,7 @@
     </message>     
     
     <message name="Willtopicupd" id="MsgId.Willtopicupd" displayName="^WilltopicupdName" sender="client">
+        <ref field="Flags" />
         <ref field="WillTopic" />
     </message>   
     
