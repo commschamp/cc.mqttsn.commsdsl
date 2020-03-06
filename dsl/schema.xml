@@ -73,7 +73,7 @@
             <special name="BroadcastToAll" val="0" />
         </int>  
         <data name="GwAdd" />
-        <enum name="QoS" type="uint8">
+        <enum name="Qos" type="uint8">
             <validValue name="AtMostOnceDelivery" val="0" />
             <validValue name="AtLeastOnceDelivery" val="1" />
             <validValue name="ExactlyOnceDelivery" val="2" />
@@ -90,7 +90,7 @@
                 <bit name="Will" idx="1" />
                 <bit name="Retain" idx="2" />
             </set>
-            <ref field="QoS" bitLength="2" />
+            <ref field="Qos" bitLength="2" />
             <set name="high" bitLength="1" displayName="_">
                 <bit name="Dup" idx="0" />
             </set>
