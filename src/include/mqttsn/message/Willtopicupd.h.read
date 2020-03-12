@@ -1,0 +1,17 @@
+/// @brief Custom read functionality
+template <typename TIter>
+comms::ErrorStatus doRead(TIter& iter, std::size_t len)
+{
+    auto es = Base::doRead(iter, len);
+    if (es != comms::ErrorStatus::Success) {
+        return es;
+    }
+        
+    bool hasFlags = field_flags().doesExist();
+    bool hasNonEmptyTopic = !field_willTopic().value().empty();
+    if (hasFlags != hasNonEmptyTopic) {
+        return comms::ErrorStatus::InvalidMsgData;
+    }
+    
+    return comms::ErrorStatus::Success;
+}
