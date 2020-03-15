@@ -2,9 +2,10 @@
 bool doRefresh()
 {
     bool updated = Base::doRefresh();
-    bool hasMissingFlags = field_flags().isMissing();
+    
     bool hasEmptyTopic = field_willTopic().value().empty();
-    if (hasMissingFlags == hasEmptyTopic) {
+    if ((hasEmptyTopic && field_flags().isMissing()) ||
+        ((!hasEmptyTopic) && field_flags().doesExist())) {
         return updated;
     }
     
