@@ -49,30 +49,50 @@ matrix:
     - os: linux
       addons:
         apt:
+          sources:
+            - sourceline: "ppa:ubuntu-toolchain-r/test"        
           packages:
             - g++-7    
       env: _CC=gcc-7 _CXX=g++-7 _DSL_CC=${_CC} _DSL_CXX=${_CXX}
     - os: linux
       addons:
         apt:
+          sources:
+            - sourceline: "ppa:ubuntu-toolchain-r/test"        
           packages:
             - g++-7    
       env: _CC=gcc-7 _CXX=g++-7 _DSL_CC=${_CC} _DSL_CXX=${_CXX} _BUILD="-DCMAKE_CXX_STANDARD=14"
     - os: linux
       addons:
         apt:
+          sources:
+            - sourceline: "ppa:ubuntu-toolchain-r/test"        
           packages:
             - g++-8    
       env: _CC=gcc-8 _CXX=g++-8 _DSL_CC=${_CC} _DSL_CXX=${_CXX}
     - os: linux
       addons:
         apt:
+          sources:
+            - sourceline: "ppa:ubuntu-toolchain-r/test"        
           packages:
             - g++-8    
       env: _CC=gcc-8 _CXX=g++-8 _DSL_CC=${_CC} _DSL_CXX=${_CXX} _BUILD="-DCMAKE_CXX_STANDARD=14"      
     - os: linux
+      addons:
+        apt:
+          sources:
+            - sourceline: "ppa:ubuntu-toolchain-r/test"        
+          packages:
+            - g++-9    
       env: _CC=gcc-9 _CXX=g++-9 _DSL_CC=${_CC} _DSL_CXX=${_CXX} _USE_GCC9=1 
     - os: linux
+      addons:
+        apt:
+          sources:
+            - sourceline: "ppa:ubuntu-toolchain-r/test"        
+          packages:
+            - g++-9    
       env: _CC=gcc-9 _CXX=g++-9 _DSL_CC=${_CC} _DSL_CXX=${_CXX} _USE_GCC9=1 _BUILD="-DCMAKE_CXX_STANDARD=14"        
     - os: linux
       addons:
@@ -172,7 +192,6 @@ matrix:
       env: _CC=clang-8 _CXX=clang++-8 _DSL_CC=${_CC} _DSL_CXX=${_CXX} _BUILD="-DCMAKE_CXX_STANDARD=14"
       
 before_install:
-  - if [ -n "${_USE_GCC9}" ]; then sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test; sudo apt-get update; sudo apt-get install g++-9; fi
   - sudo apt-get install libqt5serialport5-dev  -y 
   - sudo apt-get install libboost-program-options-dev libboost-filesystem-dev libboost-system-dev -y  
 
