@@ -3,8 +3,6 @@ language: cpp
 sudo: true
 notifications:
   email:
-    recipients:
-      - arobenko@gmail.com
     on_success: change
     on_failure: always
     
@@ -85,7 +83,7 @@ matrix:
             - sourceline: "ppa:ubuntu-toolchain-r/test"        
           packages:
             - g++-9    
-      env: _CC=gcc-9 _CXX=g++-9 _DSL_CC=${_CC} _DSL_CXX=${_CXX} _USE_GCC9=1 
+      env: _CC=gcc-9 _CXX=g++-9 _DSL_CC=${_CC} _DSL_CXX=${_CXX} 
     - os: linux
       addons:
         apt:
@@ -93,7 +91,7 @@ matrix:
             - sourceline: "ppa:ubuntu-toolchain-r/test"        
           packages:
             - g++-9    
-      env: _CC=gcc-9 _CXX=g++-9 _DSL_CC=${_CC} _DSL_CXX=${_CXX} _USE_GCC9=1 _BUILD="-DCMAKE_CXX_STANDARD=14"        
+      env: _CC=gcc-9 _CXX=g++-9 _DSL_CC=${_CC} _DSL_CXX=${_CXX} _BUILD="-DCMAKE_CXX_STANDARD=14"        
     - os: linux
       addons:
         apt:
