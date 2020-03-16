@@ -73,7 +73,7 @@
             <special name="BroadcastToAll" val="0" />
         </int>  
         <data name="GwAdd" />
-        <enum name="QoS" type="uint8">
+        <enum name="Qos" type="uint8">
             <validValue name="AtMostOnceDelivery" val="0" />
             <validValue name="AtLeastOnceDelivery" val="1" />
             <validValue name="ExactlyOnceDelivery" val="2" />
@@ -90,7 +90,7 @@
                 <bit name="Will" idx="1" />
                 <bit name="Retain" idx="2" />
             </set>
-            <ref field="QoS" bitLength="2" />
+            <ref field="Qos" bitLength="2" />
             <set name="high" bitLength="1" displayName="_">
                 <bit name="Dup" idx="0" />
             </set>
@@ -145,7 +145,9 @@
     <message name="Willtopicreq" id="MsgId.Willtopicreq" displayName="^WilltopicreqName" sender="server"/>
     
     <message name="Willtopic" id="MsgId.Willtopic" displayName="^WilltopicName" sender="client">
-        <ref field="Flags" />
+        <optional name="Flags" defaultMode="tentative">
+            <ref field="Flags" name="FlagsField" />
+        </optional>
         <ref field="WillTopic" />
     </message>    
     
@@ -225,6 +227,9 @@
     </message>     
     
     <message name="Willtopicupd" id="MsgId.Willtopicupd" displayName="^WilltopicupdName" sender="client">
+        <optional name="Flags" defaultMode="tentative">
+            <ref field="Flags" name="FlagsField" />
+        </optional>
         <ref field="WillTopic" />
     </message>   
     

@@ -1,0 +1,19 @@
+/// @brief Custom refresh functionality
+bool doRefresh()
+{
+    bool updated = Base::doRefresh();
+    
+    bool hasEmptyTopic = field_willTopic().value().empty();
+    if ((hasEmptyTopic && field_flags().isMissing()) ||
+        ((!hasEmptyTopic) && field_flags().doesExist())) {
+        return updated;
+    }
+    
+    if (hasEmptyTopic) {
+        field_flags().setMissing();
+        return true;
+    }
+    
+    field_flags().setExists();
+    return true;
+}
