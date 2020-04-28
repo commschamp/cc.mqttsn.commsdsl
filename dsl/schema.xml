@@ -22,7 +22,7 @@
         <string name="UnsubscribeName" defaultValue="UNSUBSCRIBE" />
         <string name="UnsubackName" defaultValue="UNSUBACK" />
         <string name="PingreqName" defaultValue="PINGREQ" />
-        <string name="PingrespName" defaultValue="fPINGRESP" />
+        <string name="PingrespName" defaultValue="PINGRESP" />
         <string name="DisconnectName" defaultValue="DISCONNECT" />
         <string name="WilltopicupdName" defaultValue="WILLTOPICUPD" />
         <string name="WilltopicrespName" defaultValue="WILLTOPICRESP" />
