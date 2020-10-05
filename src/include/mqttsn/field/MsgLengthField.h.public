@@ -22,3 +22,10 @@ void setLengthValue(std::size_t val)
     field_long().setExists();
     field_long().field().value() = static_cast<std::uint16_t>(val);
 }
+
+// Verifying compile time length calculations.
+static constexpr std::size_t MinLen = Base::minLength();
+static constexpr std::size_t MaxLen = Base::maxLength();
+static_assert(MinLen == Field_short::minLength(), "Invalid length assumption");
+static_assert(MaxLen == (Field_short::maxLength() + Field_long::Field::maxLength()), 
+    "Invalid length assumption");
