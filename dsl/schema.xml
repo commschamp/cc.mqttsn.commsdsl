@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="mqttsn" endian="big" dslVersion="2">
+<schema name="mqttsn" endian="big" dslVersion="5">
     <fields>
         <string name="AdvertiseName" defaultValue="ADVERTISE" />
         <string name="SearchgwName" defaultValue="SEARCHGW" />
@@ -58,13 +58,10 @@
             <validValue name="Willmsgupd" val="0x1c" displayName="^WillmsgupdName" />
             <validValue name="Willmsgresp" val="0x1d" displayName="^WillmsgrespName" />
         </enum>
-        <bundle name="MsgLengthField" displayName="Length">
+        <bundle name="MsgLengthField" displayName="Length" semanticType="Length" valueOverride="replace">
             <int name="short" type="uint8" serOffset="1" displayOffset="1"/>
-            <optional name="long">
-                <field>
-                    <int name="long" type="uint16" serOffset="3" displayOffset="3"/>
-                </field>
-                <cond value="$short = 0" />                    
+            <optional name="long" cond="$short = 0">
+                <int name="long" type="uint16" serOffset="3" displayOffset="3"/>
             </optional>
         </bundle>  
         <int name="GwId" type="uint8" />  
@@ -79,12 +76,13 @@
             <validValue name="ExactlyOnceDelivery" val="2" />
             <validValue name="NoGwPublish" val="3" />
         </enum>
+        <enum name="TopicIdType" type="uint8">
+            <validValue name="Normal" val="0" />
+            <validValue name="PredefinedTopicId" val="1" />
+            <validValue name="ShortTopicName" val="2" />
+        </enum>        
         <bitfield name="Flags">
-            <enum name="TopicIdType" type="uint8" bitLength="2">
-                <validValue name="Normal" val="0" />
-                <validValue name="PredefinedTopicId" val="1" />
-                <validValue name="ShortTopicName" val="2" />
-            </enum>
+            <ref field="TopicIdType" bitLength="2" />
             <set name="mid" bitLength="3" displayName="_">
                 <bit name="CleanSession" idx="0" />
                 <bit name="Will" idx="1" />
@@ -112,7 +110,7 @@
     </fields>
     
     <frame name="Frame">
-        <custom name="Length" field="MsgLengthField" />
+        <size name="Length" field="MsgLengthField" />
         <id name="Id" field="MsgId" />
         <payload name="Data" />
     </frame>       
@@ -144,7 +142,7 @@
     
     <message name="Willtopicreq" id="MsgId.Willtopicreq" displayName="^WilltopicreqName" sender="server"/>
     
-    <message name="Willtopic" id="MsgId.Willtopic" displayName="^WilltopicName" sender="client">
+    <message name="Willtopic" id="MsgId.Willtopic" displayName="^WilltopicName" readOverride="replace" refreshOverride="replace" sender="client">
         <optional name="Flags" defaultMode="tentative">
             <ref field="Flags" name="FlagsField" />
         </optional>
@@ -193,10 +191,10 @@
     <message name="Subscribe" id="MsgId.Subscribe" displayName="^SubscribeName" sender="client">
         <ref field="Flags" />
         <ref name="MsgId" field="MessageId" />
-        <optional name="TopicId" defaultMode="exists" displayExtModeCtrl="true">
+        <optional name="TopicId" defaultMode="exists" displayExtModeCtrl="true" cond="$Flags.TopicIdType != TopicIdType.Normal">
             <ref  field="TopicId" />
         </optional>
-        <optional name="TopicName" defaultMode="missing" displayExtModeCtrl="true">
+        <optional name="TopicName" defaultMode="missing" displayExtModeCtrl="true" cond="$Flags.TopicIdType = TopicIdType.Normal">
             <ref field="TopicName" />
         </optional>
     </message>
@@ -226,7 +224,7 @@
         </optional>
     </message>     
     
-    <message name="Willtopicupd" id="MsgId.Willtopicupd" displayName="^WilltopicupdName" sender="client">
+    <message name="Willtopicupd" id="MsgId.Willtopicupd" displayName="^WilltopicupdName" readOverride="replace" refreshOverride="replace" sender="client">
         <optional name="Flags" defaultMode="tentative">
             <ref field="Flags" name="FlagsField" />
         </optional>
