@@ -130,7 +130,7 @@ if (MQTTSN_BUILD_GEN_PROTOCOL)
         ExternalProject_Add_Step(
             "prot_tgt" 
             "doc"
-            COMMAND ${CMAKE_COMMAND} --build ${prot_build_dir} --target doc_mqttsn
+            COMMAND ${CMAKE_COMMAND} --build ${prot_build_dir} --target doc_cc_mqttsn
             DEPENDEES "build"
             DEPENDERS "install"
         )
