@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="mqttsn" endian="big" dslVersion="5">
+<schema name="cc_mqttsn" endian="big" dslVersion="5">
     <fields>
         <string name="AdvertiseName" defaultValue="ADVERTISE" />
         <string name="SearchgwName" defaultValue="SEARCHGW" />
