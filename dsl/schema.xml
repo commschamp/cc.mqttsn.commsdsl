@@ -64,7 +64,7 @@
             <validValue name="Willmsgresp" val="0x1d" displayName="^WillmsgrespName" />
             <validValue name="Fwd" val="0xfe" displayName="^FwdName" />
         </enum>
-        <bundle name="MsgLengthField" displayName="Length" semanticType="Length" valueOverride="replace">
+        <bundle name="MsgLengthField" displayName="Length" semanticType="length" valueOverride="replace">
             <int name="short" type="uint8" serOffset="1" displayOffset="1"/>
             <optional name="long" cond="$short = 0">
                 <int name="long" type="uint16" serOffset="3" displayOffset="3"/>
