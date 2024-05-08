@@ -255,6 +255,6 @@
 
     <message name="Fwd" id="MsgId.Fwd" displayName="^FwdName" platforms="+Gw,Fwd">             
         <ref field="Ctrl" />
-        <data name="Data" />
+        <data name="NodeId" />
     </message>    
 </schema>
