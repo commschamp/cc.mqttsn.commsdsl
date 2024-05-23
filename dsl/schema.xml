@@ -117,6 +117,8 @@
             <ref field="Radius" bitLength="2" />
             <int name="Reserved" type="uint8" defaultValidValue="0" bitLength="6" />
         </bitfield>
+
+        <data name="NodeId" />
     </fields>
     
     <frame name="Frame">
@@ -125,16 +127,16 @@
         <payload name="Data" />
     </frame>       
     
-    <message name="Advertise" id="MsgId.Advertise" displayName="^AdvertiseName" sender="server" platforms="+Prot,Gw">
+    <message name="Advertise" id="MsgId.Advertise" displayName="^AdvertiseName" sender="server">
         <ref field="GwId" />
         <ref field="Duration" />
     </message>
     
-    <message name="Searchgw" id="MsgId.Searchgw" displayName="^SearchgwName" sender="client" platforms="+Prot,Gw">
+    <message name="Searchgw" id="MsgId.Searchgw" displayName="^SearchgwName">
         <ref field="Radius" />
     </message>   
     
-    <message name="Gwinfo" id="MsgId.Gwinfo" displayName="^GwinfoName" platforms="+Prot,Gw">
+    <message name="Gwinfo" id="MsgId.Gwinfo" displayName="^GwinfoName">
         <ref field="GwId" />
         <ref field="GwAdd" />
     </message>  
@@ -255,6 +257,6 @@
 
     <message name="Fwd" id="MsgId.Fwd" displayName="^FwdName" platforms="+Gw,Fwd">             
         <ref field="Ctrl" />
-        <data name="NodeId" />
+        <ref field="NodeId" />
     </message>    
 </schema>
