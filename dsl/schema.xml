@@ -224,11 +224,11 @@
         <ref name="MsgId" field="MessageId" />
     </message>   
     
-    <message name="Pingreq" id="MsgId.Pingreq" displayName="^PingreqName" sender="client" platforms="+Prot,Gw">
+    <message name="Pingreq" id="MsgId.Pingreq" displayName="^PingreqName" platforms="+Prot,Gw">
         <ref field="ClientId" />
     </message>   
     
-    <message name="Pingresp" id="MsgId.Pingresp" displayName="^PingrespName" sender="server" platforms="+Prot,Gw" /> 
+    <message name="Pingresp" id="MsgId.Pingresp" displayName="^PingrespName" platforms="+Prot,Gw" /> 
     
     <message name="Disconnect" id="MsgId.Disconnect" displayName="^DisconnectName" platforms="+Prot,Gw">
         <optional name="Duration" defaultMode="tentative">
