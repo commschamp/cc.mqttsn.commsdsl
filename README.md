@@ -12,8 +12,15 @@ project is used to generate C++11 code of the protocol implementation.
 The [src](src) folder contains additional and/or overriding default functionality 
 code snippets, that get injected into the generated code.
 
-The **generated** CMake project of this protocol definition is hosted and can be
-viewed at [cc.mqttsn.generated](https://github.com/commschamp/cc.mqttsn.generated)
+The code generators from the [commsdsl](https://github.com/commschamp/commsdsl)
+repository generate full CMake projects.
+Some of these **generated** projects are hosted as separate
+repositories that can be viewed and used independently.
+
+- [cc.mqttsn.generated](https://github.com/commschamp/cc.mqttsn.generated) - Protocol 
+    definition 
+- [cc.mqttsn_protocol.cc_tools_plugin](https://github.com/commschamp/cc.mqttsn_protocol.cc_tools_plugin) -
+    Protocol plugin for the [CommsChampion Tools](https://github.com/commschamp/cc_tools_qt).
 
 # License
 Please read [License](https://github.com/commschamp/commsdsl#license)
