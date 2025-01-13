@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="cc_mqttsn" endian="big" dslVersion="6">
+<schema name="cc_mqttsn" endian="big" dslVersion="7">
     <platform name="Prot" />
     <platform name="Gw" />
     <platform name="Fwd" />
@@ -99,7 +99,7 @@
                 <bit name="Dup" idx="0" />
             </set>
         </bitfield>
-        <int name="ProtocolId" type="uint8" defaultValue="0x1" validValue="0x1" />
+        <int name="ProtocolId" type="uint8" defaultValidValue="0x1" />
         <string name="ClientId" />
         <enum name="ReturnCode" type="uint8">
             <validValue name="Accepted" val="0" />
@@ -203,10 +203,10 @@
     <message name="Subscribe" id="MsgId.Subscribe" displayName="^SubscribeName" sender="client" platforms="+Prot,Gw">
         <ref field="Flags" />
         <ref name="MsgId" field="MessageId" />
-        <optional name="TopicId" defaultMode="exists" displayExtModeCtrl="true" cond="$Flags.TopicIdType != TopicIdType.Normal">
+        <optional name="TopicId" defaultMode="exists" cond="$Flags.TopicIdType != TopicIdType.Normal">
             <ref  field="TopicId" />
         </optional>
-        <optional name="TopicName" defaultMode="missing" displayExtModeCtrl="true" cond="$Flags.TopicIdType = TopicIdType.Normal">
+        <optional name="TopicName" defaultMode="missing" cond="$Flags.TopicIdType = TopicIdType.Normal">
             <ref field="TopicName" />
         </optional>
     </message>
