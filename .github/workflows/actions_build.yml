@@ -71,10 +71,10 @@ jobs:
       run: |
         cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install \
         -DCMAKE_PREFIX_PATH=${{runner.workspace}}/build/install -DCMAKE_CXX_STANDARD=${{matrix.cpp}} \
-        -DMQTT311_TOOLS_QT_VER=${{matrix.qt_ver}} \
-        -DMQTT311_GEN_PROTOCOL=ON -DMQTT311_GEN_TEST=ON -DMQTT311_GEN_TOOLS=ON -DMQTT311_BUILD_TOOLS=${{env.BUILD_TOOLS}} \
-        -DMQTT311_GEN_SWIG=ON -DMQTT311_GEN_EMSCRIPTEN=ON -DMQTT311_GEN_C=ON -DMQTT311_GEN_LATEX=ON -DMQTT311_BUILD_LATEX=${{env.BUILD_LATEX}} \
-        -DMQTT311_BUILD_PROT_DOC=${{env.BUILD_DOCS}}
+        -DMQTTSN_TOOLS_QT_VER=${{matrix.qt_ver}} \
+        -DMQTTSN_GEN_PROTOCOL=ON -DMQTTSN_GEN_TEST=ON -DMQTTSN_GEN_TOOLS=ON -DMQTTSN_BUILD_TOOLS=${{env.BUILD_TOOLS}} \
+        -DMQTTSN_GEN_SWIG=ON -DMQTTSN_GEN_EMSCRIPTEN=ON -DMQTTSN_GEN_C=ON -DMQTTSN_GEN_LATEX=ON -DMQTTSN_BUILD_LATEX=${{env.BUILD_LATEX}} \
+        -DMQTTSN_BUILD_PROT_DOC=${{env.BUILD_DOCS}}
       env:
         CC: gcc-${{matrix.cc_ver}}
         CXX: g++-${{matrix.cc_ver}}
@@ -136,9 +136,9 @@ jobs:
       run: |
         cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install \
         -DCMAKE_PREFIX_PATH=${{runner.workspace}}/build/install -DCMAKE_CXX_STANDARD=${{matrix.cpp}} \
-        -DMQTT311_TOOLS_QT_VER=${{matrix.qt_ver}} \
-        -DMQTT311_GEN_PROTOCOL=ON -DMQTT311_GEN_TEST=ON -DMQTT311_GEN_TOOLS=ON -DMQTT311_BUILD_TOOLS=${{env.BUILD_TOOLS}} \
-        -DMQTT311_GEN_SWIG=ON -DMQTT311_GEN_EMSCRIPTEN=ON -DMQTT311_GEN_C=ON -DMQTT311_GEN_LATEX=ON -DMQTT311_BUILD_LATEX=OFF
+        -DMQTTSN_TOOLS_QT_VER=${{matrix.qt_ver}} \
+        -DMQTTSN_GEN_PROTOCOL=ON -DMQTTSN_GEN_TEST=ON -DMQTTSN_GEN_TOOLS=ON -DMQTTSN_BUILD_TOOLS=${{env.BUILD_TOOLS}} \
+        -DMQTTSN_GEN_SWIG=ON -DMQTTSN_GEN_EMSCRIPTEN=ON -DMQTTSN_GEN_C=ON -DMQTTSN_GEN_LATEX=ON -DMQTTSN_BUILD_LATEX=OFF
       env:
         CC: clang-${{matrix.cc_ver}}
         CXX: clang++-${{matrix.cc_ver}}
@@ -211,9 +211,9 @@ jobs:
       run: |
         cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install \
         -DCMAKE_PREFIX_PATH=${{runner.workspace}}/build/install -DCMAKE_CXX_STANDARD=${{matrix.cpp}} \
-        -DMQTT311_TOOLS_QT_VER=${{matrix.qt_ver}} \
-        -DMQTT311_GEN_PROTOCOL=ON -DMQTT311_GEN_TEST=ON -DMQTT311_GEN_TOOLS=ON -DMQTT311_BUILD_TOOLS=${{env.BUILD_TOOLS}} \
-        -DMQTT311_GEN_SWIG=ON -DMQTT311_GEN_EMSCRIPTEN=ON -DMQTT311_GEN_C=ON -DMQTT311_GEN_LATEX=ON -DMQTT311_BUILD_LATEX=OFF
+        -DMQTTSN_TOOLS_QT_VER=${{matrix.qt_ver}} \
+        -DMQTTSN_GEN_PROTOCOL=ON -DMQTTSN_GEN_TEST=ON -DMQTTSN_GEN_TOOLS=ON -DMQTTSN_BUILD_TOOLS=${{env.BUILD_TOOLS}} \
+        -DMQTTSN_GEN_SWIG=ON -DMQTTSN_GEN_EMSCRIPTEN=ON -DMQTTSN_GEN_C=ON -DMQTTSN_GEN_LATEX=ON -DMQTTSN_BUILD_LATEX=OFF
       env:
         CC: clang-${{matrix.cc_ver}}
         CXX: clang++-${{matrix.cc_ver}}
@@ -281,9 +281,9 @@ jobs:
       run: |
         cmake %GITHUB_WORKSPACE% -A ${{matrix.arch}} -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install ^
           -DCMAKE_PREFIX_PATH="${{runner.workspace}}/build/install;${{env.QTDIR}}" ^
-          -DCMAKE_CXX_STANDARD=${{matrix.cpp}} -DMQTT311_TOOLS_QT_VER=${{matrix.qt_ver}} ^
-          -DCMAKE_CXX_STANDARD=${{matrix.cpp}} -DMQTT311_GEN_TOOLS=ON -DMQTT311_BUILD_TOOLS=${{env.BUILD_TOOLS}} -DMQTT311_TOOLS_QT_VER=${{matrix.qt_ver}} ^
-          -DMQTT311_GEN_PROTOCOL=ON -DMQTT311_GEN_TEST=ON -DMQTT311_GEN_C=ON -DMQTT311_GEN_LATEX=ON -DMQTT311_BUILD_LATEX=OFF ^
+          -DCMAKE_CXX_STANDARD=${{matrix.cpp}} -DMQTTSN_TOOLS_QT_VER=${{matrix.qt_ver}} ^
+          -DCMAKE_CXX_STANDARD=${{matrix.cpp}} -DMQTTSN_GEN_TOOLS=ON -DMQTTSN_BUILD_TOOLS=${{env.BUILD_TOOLS}} -DMQTTSN_TOOLS_QT_VER=${{matrix.qt_ver}} ^
+          -DMQTTSN_GEN_PROTOCOL=ON -DMQTTSN_GEN_TEST=ON -DMQTTSN_GEN_C=ON -DMQTTSN_GEN_LATEX=ON -DMQTTSN_BUILD_LATEX=OFF ^
       env:
         BUILD_TOOLS: "${{ matrix.cpp >= 17 && matrix.arch == 'x64'  && 'ON' || 'OFF' }}"
 
@@ -348,9 +348,9 @@ jobs:
       working-directory: ${{runner.workspace}}/build
       run: |
         cmake %GITHUB_WORKSPACE% -A ${{matrix.arch}} -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install ^
-          -DCMAKE_PREFIX_PATH="${{runner.workspace}}/build/install" ^
-          -DCMAKE_CXX_STANDARD=${{matrix.cpp}}  -DMQTT311_GEN_TOOLS=ON -DMQTT311_BUILD_TOOLS=${{env.BUILD_TOOLS}} -DMQTT311_TOOLS_QT_VER=${{matrix.qt_ver}} ^
-          -DMQTT311_GEN_PROTOCOL=ON -DMQTT311_GEN_TEST=ON -DMQTT311_GEN_C=ON -DMQTT311_GEN_LATEX=ON -DMQTT311_BUILD_LATEX=OFF ^
+          -DCMAKE_PREFIX_PATH="${{runner.workspace}}/build/install;${{env.QTDIR}}" ^
+          -DCMAKE_CXX_STANDARD=${{matrix.cpp}}  -DMQTTSN_GEN_TOOLS=ON -DMQTTSN_BUILD_TOOLS=${{env.BUILD_TOOLS}} -DMQTTSN_TOOLS_QT_VER=${{matrix.qt_ver}} ^
+          -DMQTTSN_GEN_PROTOCOL=ON -DMQTTSN_GEN_TEST=ON -DMQTTSN_GEN_C=ON -DMQTTSN_GEN_LATEX=ON -DMQTTSN_BUILD_LATEX=OFF ^
       env:
         BUILD_TOOLS: "${{ matrix.cpp >= 17 && matrix.arch == 'x64'  && 'ON' || 'OFF' }}"
 
