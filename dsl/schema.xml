@@ -33,7 +33,7 @@
         <string name="WillmsgupdName" defaultValue="WILLMSGUPD" />
         <string name="WillmsgrespName" defaultValue="WILLMSGRESP" />
         <string name="FwdName" defaultValue="FWD" />
-        
+
         <enum name="MsgId" type="uint8" semanticType="messageId" hexAssign="true">
             <validValue name="Advertise" val="0x0" displayName="^AdvertiseName" />
             <validValue name="Searchgw" val="0x1" displayName="^SearchgwName" />
@@ -69,12 +69,12 @@
             <optional name="long" cond="$short = 0">
                 <int name="long" type="uint16" serOffset="3" displayOffset="3"/>
             </optional>
-        </bundle>  
-        <int name="GwId" type="uint8" />  
-        <int name="Duration" type="uint16" units="seconds" />        
+        </bundle>
+        <int name="GwId" type="uint8" />
+        <int name="Duration" type="uint16" units="seconds" />
         <int name="Radius" type="uint8">
             <special name="BroadcastToAll" val="0" />
-        </int>  
+        </int>
         <data name="GwAdd" />
         <enum name="Qos" type="uint8">
             <validValue name="AtMostOnceDelivery" val="0" />
@@ -86,7 +86,7 @@
             <validValue name="Normal" val="0" />
             <validValue name="PredefinedTopicId" val="1" />
             <validValue name="ShortTopicName" val="2" />
-        </enum>        
+        </enum>
         <bitfield name="Flags">
             <ref field="TopicIdType" bitLength="2" />
             <set name="mid" bitLength="3" displayName="_">
@@ -120,86 +120,86 @@
 
         <data name="NodeId" />
     </fields>
-    
+
     <frame name="Frame">
         <size name="Length" field="MsgLengthField" />
         <id name="Id" field="MsgId" />
         <payload name="Data" />
-    </frame>       
-    
+    </frame>
+
     <message name="Advertise" id="MsgId.Advertise" displayName="^AdvertiseName" sender="server">
         <ref field="GwId" />
         <ref field="Duration" />
     </message>
-    
+
     <message name="Searchgw" id="MsgId.Searchgw" displayName="^SearchgwName">
         <ref field="Radius" />
-    </message>   
-    
+    </message>
+
     <message name="Gwinfo" id="MsgId.Gwinfo" displayName="^GwinfoName">
         <ref field="GwId" />
         <ref field="GwAdd" />
-    </message>  
-    
+    </message>
+
     <message name="Connect" id="MsgId.Connect" displayName="^ConnectName" sender="client" platforms="+Prot,Gw">
         <ref field="Flags" />
         <ref field="ProtocolId" />
         <ref field="Duration" />
         <ref field="ClientId" />
-    </message>    
-    
+    </message>
+
     <message name="Connack" id="MsgId.Connack" displayName="^ConnackName" sender="server" platforms="+Prot,Gw">
         <ref field="ReturnCode" />
-    </message>        
-    
+    </message>
+
     <message name="Willtopicreq" id="MsgId.Willtopicreq" displayName="^WilltopicreqName" sender="server" platforms="+Prot,Gw" />
-    
+
     <message name="Willtopic" id="MsgId.Willtopic" displayName="^WilltopicName" readOverride="replace" refreshOverride="replace" sender="client" platforms="+Prot,Gw">
         <optional name="Flags" defaultMode="tentative">
             <ref field="Flags" name="FlagsField" />
         </optional>
         <ref field="WillTopic" />
-    </message>    
-    
+    </message>
+
     <message name="Willmsgreq" id="MsgId.Willmsgreq" displayName="^WillmsgreqName" sender="server" platforms="+Prot,Gw" />
-    
+
     <message name="Willmsg" id="MsgId.Willmsg" displayName="^WillmsgName" sender="client" platforms="+Prot,Gw">
         <ref field="WillMsg" />
-    </message> 
-    
+    </message>
+
     <message name="Register" id="MsgId.Register" displayName="^RegisterName" platforms="+Prot,Gw">
         <ref field="TopicId" />
         <ref name="MsgId" field="MessageId" />
         <ref field="TopicName" />
-    </message>     
-    
+    </message>
+
     <message name="Regack" id="MsgId.Regack" displayName="^RegackName" platforms="+Prot,Gw">
         <ref field="TopicId" />
         <ref name="MsgId" field="MessageId" />
         <ref field="ReturnCode" />
-    </message>   
-    
+    </message>
+
     <message name="Publish" id="MsgId.Publish" displayName="^PublishName" platforms="+Prot,Gw">
         <ref field="Flags" />
         <ref field="TopicId" />
         <ref name="MsgId" field="MessageId" />
         <ref field="Data" />
-    </message>                      
-    
+    </message>
+
     <message name="Puback" id="MsgId.Puback" displayName="^PubackName" platforms="+Prot,Gw">
         <ref field="TopicId" />
         <ref name="MsgId" field="MessageId" />
         <ref field="ReturnCode" />
-    </message>      
-    
+    </message>
+
     <message name="Pubrec" id="MsgId.Pubrec" displayName="^PubrecName" platforms="+Prot,Gw">
         <ref name="MsgId" field="MessageId" />
     </message>
-    
+
     <message name="Pubrel" id="MsgId.Pubrel" displayName="^PubrelName" copyFieldsFrom="Pubrec" platforms="+Prot,Gw" />
-    
+
     <message name="Pubcomp" id="MsgId.Pubcomp" displayName="^PubcompName" copyFieldsFrom="Pubrec" platforms="+Prot,Gw" />
-    
+
     <message name="Subscribe" id="MsgId.Subscribe" displayName="^SubscribeName" sender="client" platforms="+Prot,Gw">
         <ref field="Flags" />
         <ref name="MsgId" field="MessageId" />
@@ -210,53 +210,53 @@
             <ref field="TopicName" />
         </optional>
     </message>
-    
+
     <message name="Suback" id="MsgId.Suback" displayName="^SubackName" sender="server" platforms="+Prot,Gw">
         <ref field="Flags" />
         <ref field="TopicId" />
         <ref name="MsgId" field="MessageId" />
         <ref field="ReturnCode" />
-    </message>     
-    
+    </message>
+
     <message name="Unsubscribe" id="MsgId.Unsubscribe" displayName="^UnsubscribeName" copyFieldsFrom="Subscribe" sender="client" platforms="+Prot,Gw" />
-    
+
     <message name="Unsuback" id="MsgId.Unsuback" displayName="^UnsubackName" sender="server" platforms="+Prot,Gw">
         <ref name="MsgId" field="MessageId" />
-    </message>   
-    
+    </message>
+
     <message name="Pingreq" id="MsgId.Pingreq" displayName="^PingreqName" platforms="+Prot,Gw">
         <ref field="ClientId" />
-    </message>   
-    
-    <message name="Pingresp" id="MsgId.Pingresp" displayName="^PingrespName" platforms="+Prot,Gw" /> 
-    
+    </message>
+
+    <message name="Pingresp" id="MsgId.Pingresp" displayName="^PingrespName" platforms="+Prot,Gw" />
+
     <message name="Disconnect" id="MsgId.Disconnect" displayName="^DisconnectName" platforms="+Prot,Gw">
         <optional name="Duration" defaultMode="tentative">
             <ref field="Duration" />
         </optional>
-    </message>     
-    
+    </message>
+
     <message name="Willtopicupd" id="MsgId.Willtopicupd" displayName="^WilltopicupdName" readOverride="replace" refreshOverride="replace" sender="client" platforms="+Prot,Gw">
         <optional name="Flags" defaultMode="tentative">
             <ref field="Flags" name="FlagsField" />
         </optional>
         <ref field="WillTopic" />
-    </message>   
-    
+    </message>
+
     <message name="Willmsgupd" id="MsgId.Willmsgupd" displayName="^WillmsgupdName" sender="client" platforms="+Prot,Gw">
         <ref field="WillMsg" />
-    </message>     
-    
+    </message>
+
     <message name="Willtopicresp" id="MsgId.Willtopicresp" displayName="^WilltopicrespName" sender="server" platforms="+Prot,Gw">
         <ref field="ReturnCode" />
-    </message>       
-    
-    <message name="Willmsgresp" id="MsgId.Willmsgresp" displayName="^WillmsgrespName" sender="server" platforms="+Prot,Gw">             
+    </message>
+
+    <message name="Willmsgresp" id="MsgId.Willmsgresp" displayName="^WillmsgrespName" sender="server" platforms="+Prot,Gw">
         <copyFieldsFrom value="Willtopicresp" />
     </message>
 
-    <message name="Fwd" id="MsgId.Fwd" displayName="^FwdName" platforms="+Gw,Fwd">             
+    <message name="Fwd" id="MsgId.Fwd" displayName="^FwdName" platforms="+Gw,Fwd">
         <ref field="Ctrl" />
         <ref field="NodeId" />
-    </message>    
+    </message>
 </schema>
